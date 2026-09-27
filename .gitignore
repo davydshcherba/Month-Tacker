@@ -28,3 +28,4 @@ dist-ssr
 venv
 __pycache__/
 architectory.excalidraw
+MODELS.md
