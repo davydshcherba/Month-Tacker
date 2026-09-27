@@ -8,9 +8,9 @@ from app.models.base import Base
 
 DATABASE_URL = (
     f"postgresql+asyncpg://"
-    f"{settings.DB_USER}:{settings.DB_PASSWORD}"
-    f"@{settings.DB_HOST}:{settings.DB_PORT}"
-    f"/{settings.DB_NAME}"
+    f"{settings.POSTGRES_USER}:{settings.POSTGRES_PASSWORD}"
+    f"@{settings.POSTGRES_HOST}:{settings.POSTGRES_PORT}"
+    f"/{settings.POSTGRES_DB}"
 )
 
 engine = create_async_engine(
