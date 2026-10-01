@@ -7,7 +7,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 # ! DUO IMPORT FIX 
 # from .user import UserModel
 
-
+# TODO Add all month
 class Month(str, Enum):
     SEPTEMBER = "September"
     OCTOBER = "October"
