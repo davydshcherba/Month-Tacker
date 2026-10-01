@@ -1,6 +1,10 @@
 from app.models.base import Base
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import String
+from typing import List
+
+# ! DUO IMPORT FIX!!
+# from .month import MonthGoalModel
 
 class UserModel(Base):
     __tablename__ = "users"
@@ -25,3 +29,4 @@ class UserModel(Base):
             nullable=False,
         ) 
     
+    month_id: Mapped[List["MonthGoalModel"]] = relationship()

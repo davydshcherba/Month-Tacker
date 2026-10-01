@@ -9,7 +9,7 @@ from app.models.base import Base
 
 # Імпортуємо моделі, щоб SQLAlchemy знав про них
 from app.models.user import UserModel
-
+from app.models.month import MonthGoalModel
 
 config = context.config
 
