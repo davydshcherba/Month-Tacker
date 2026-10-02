@@ -1,19 +1,11 @@
-from enum import Enum
 
 from app.models.base import Base
 from sqlalchemy import Enum as SQLEnum, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+from app.utils.enum.month import MonthEnum
 
 # ! DUO IMPORT FIX 
 # from .user import UserModel
-
-# TODO Add all month
-class Month(str, Enum):
-    SEPTEMBER = "September"
-    OCTOBER = "October"
-    NOVEMBER = "November"
-    DECEMBER = "December"
-
 
 class MonthGoalModel(Base):
     __tablename__ = "monthgoal"
@@ -26,8 +18,8 @@ class MonthGoalModel(Base):
         nullable=False,
     )
 
-    month: Mapped[Month] = mapped_column(
-        SQLEnum(Month),
+    month: Mapped[MonthEnum] = mapped_column(
+        SQLEnum(MonthEnum),
         nullable=False,
     )
 
