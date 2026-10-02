@@ -29,4 +29,7 @@ class UserModel(Base):
             nullable=False,
         ) 
     
-    month_id: Mapped[List["MonthGoalModel"]] = relationship()
+    month_goals: Mapped[list["MonthGoalModel"]] = relationship(
+        "MonthGoalModel",
+        back_populates="user",
+    )
