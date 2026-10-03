@@ -4,7 +4,7 @@ from fastapi import FastAPI
 
 from app.db.postgrs import engine
 from app.models.base import Base
-from backend.app.api.router import router
+from app.api.router import router
 
 
 
