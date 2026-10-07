@@ -26,7 +26,6 @@ class UserModel(Base):
     )
 
     hashed_password: Mapped[str] = mapped_column(
-        String(50),
         nullable=False,
     )
 
