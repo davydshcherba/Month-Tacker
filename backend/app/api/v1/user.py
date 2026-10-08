@@ -5,6 +5,7 @@ from app.models.user import UserModel
 from app.db.postgrs import get_db
 from app.utils.hasher import Hasher
 from app.schemas.user import UserRegister
+from app.utils.JWT import encode_access_JWT
 user_router = APIRouter()
 
 @user_router.post("/register")
@@ -13,7 +14,6 @@ async def register(
     session: AsyncSession = Depends(get_db),
 ):
     hashed_password = Hasher.get_password_hash(data.password)
-    print(hashed_password)
     user = UserModel(
         username=data.username,
         name=data.name,
@@ -24,4 +24,7 @@ async def register(
     await session.commit()
     await session.refresh(user)
 
-    return user
+    token = encode_access_JWT({
+        "user_id": user.id
+    })
+    return token
