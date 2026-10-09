@@ -15,6 +15,17 @@ async def register(
     data: UserRegister,
     session: AsyncSession = Depends(get_db),
 ):
+    result = await session.execute(
+        select(UserModel).where(
+            UserModel.username == data.username
+        )
+    )
+    existing_user = result.scalar_one_or_none()
+    if existing_user:
+        raise HTTPException(
+            status_code=409,
+            detail="Username is already taken"
+        )
     hashed_password = Hasher.get_password_hash(data.password)
     user = UserModel(
         username=data.username,
